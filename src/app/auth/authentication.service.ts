@@ -93,6 +93,23 @@ export class AuthenticationService {
       );
   }
 
+  loginWithSocial(data: any): Observable<Account> {
+    return this.http
+      .post<any>(Constants.LOGIN_SOCIAL_URL, data, { observe: 'response' })
+      .pipe(
+        map((resp) => {
+          // tslint:disable-next-line: variable-name
+          const _credentials: Credentials = {
+            username: `${resp.body.result.fullName}`,
+            token: this.getToken(resp.headers.get('Authorization')),
+            refreshToken: resp.headers.get('refreshtoken'),
+            id: resp.body.result.id,
+          };
+          this.credentialsService.setCredentials(_credentials, true);
+          return resp.body.result;
+        })
+      );
+  }
   private getToken(token: string) {
     // tslint:disable-next-line: variable-name
     const _token = token.split(' ');

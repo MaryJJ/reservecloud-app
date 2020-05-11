@@ -1,0 +1,19 @@
+{
+  "hosting": [
+    {
+      "target": "reservecloud-app",
+      "public": "dist/reservecloud-app/browser",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    }
+  ]
+}

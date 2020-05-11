@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "reservecloud-75127": {
+      "hosting": {
+        "reservecloud-app": [
+          "reservecloud-75127"
+        ]
+      }
+    }
+  }
+}

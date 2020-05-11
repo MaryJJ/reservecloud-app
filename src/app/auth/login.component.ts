@@ -9,6 +9,7 @@ import { Logger } from '../@core/logger.service';
 import { appAnimations } from '../animations';
 import { environment } from 'src/environments/environment';
 import { untilDestroyed } from '../@core/until-destroyed';
+import { FirebaseAuthService } from '../@core/services/firebase-auth.service';
 
 const log = new Logger('Login');
 
@@ -28,7 +29,8 @@ export class LoginComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private credentialsService: CredentialsService
+    private credentialsService: CredentialsService,
+    private fireAuthService: FirebaseAuthService
   ) {
     this.createForm();
   }
@@ -70,33 +72,40 @@ export class LoginComponent implements OnInit, OnDestroy {
       );
   }
   async loginWithGoogle() {
-    // try {
-    //   this.isLoadingG = true;
-    //   const accountData = await this.authService.GoogleAuth();
-    //   const login$ = this.authenticationService.loginWithGoogle(accountData.credential.idToken);
-    //   login$
-    //     .pipe(
-    //       finalize(() => {
-    //         this.loginForm.markAsPristine();
-    //         this.isLoadingG = false;
-    //       }),
-    //       untilDestroyed(this)
-    //     )
-    //     .subscribe(
-    //       (account) => {
-    //         this.sharedAInfoService.sendAccount(account);
-    //         this.router.navigate([this.route.snapshot.queryParams.redirect || '/all-projects'],
-    // { replaceUrl: true });
-    //       },
-    //       (error) => {
-    //         log.debug(error);
-    //         this.error = error;
-    //       }
-    //     );
-    // } catch (error) {
-    //   log.error(error);
-    //   this.isLoadingG = false;
-    // }
+    try {
+      this.isLoadingG = true;
+      const result = await this.fireAuthService.GoogleAuth();
+      console.log(result);
+      const login$ = this.authenticationService.loginWithSocial({
+        uid: result.data.user.uid,
+        token: result.idToken,
+        provider: 'google',
+      });
+      login$
+        .pipe(
+          finalize(() => {
+            this.loginForm.markAsPristine();
+            this.isLoadingG = false;
+          }),
+          untilDestroyed(this)
+        )
+        .subscribe(
+          (account) => {
+            // this.sharedAInfoService.sendAccount(account);
+            this.router.navigate(
+              [this.route.snapshot.queryParams.redirect || '/dashboard'],
+              { replaceUrl: true }
+            );
+          },
+          (error) => {
+            log.debug(error);
+            this.error = error;
+          }
+        );
+    } catch (error) {
+      log.error(error);
+      this.isLoadingG = false;
+    }
   }
   private createForm() {
     this.loginForm = this.formBuilder.group({

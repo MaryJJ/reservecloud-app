@@ -12,11 +12,14 @@ import { SharedModule } from './@shared/shared.module';
 import { ShellModule } from './shell/shell.module';
 import { HomeModule } from './home/home.module';
 import { AuthModule } from './auth/auth.module';
+import { AngularFireModule } from '@angular/fire';
+import { environment } from 'src/environments/environment';
 
 @NgModule({
   declarations: [AppComponent],
   imports: [
     BrowserModule.withServerTransition({ appId: 'serverApp' }),
+    AngularFireModule.initializeApp(environment.firebaseConfig),
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
