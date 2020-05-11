@@ -1,0 +1,15 @@
+<mat-toolbar class="primaryBar mat-elevation-z6" color="primary" role="heading">
+  <span [routerLink]="['/home']">CloudReserve</span>
+  <span class="spacer"></span>
+  <button mat-icon-button [routerLink]="['/login']" *ngIf="!credential">
+    <mat-icon aria-hidden="false" aria-label="Login in the system">
+      account_circle
+    </mat-icon>
+  </button>
+  <button mat-icon-button [routerLink]="['/all-projects']" *ngIf="credential">
+    <mat-icon aria-hidden="false" aria-label="Login in the system">
+      home
+    </mat-icon>
+  </button>
+  <!-- <app-language-selector icon="true"></app-language-selector> -->
+</mat-toolbar>

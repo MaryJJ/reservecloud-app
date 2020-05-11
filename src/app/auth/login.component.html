@@ -1,0 +1,74 @@
+<div id="login" fxLayout="row" fxLayoutAlign="start" fxLayoutGap="1.5rem" class="mat-typography">
+  <div id="login-intro" fxFlex fxHide fxShow.gt-xs>
+    <div class="logo" [@animate]="{ value: '*', params: { scale: '0.2' } }">
+      <img [routerLink]="'/home'" src="assets/entity-system-management@512.png" />
+    </div>
+    <div class="title" [@animate]="{ value: '*', params: { delay: '50ms', y: '25px' } }">
+      Bienvenido a CloudReserve!
+    </div>
+    <div class="description" [@animate]="{ value: '*', params: { delay: '100ms', y: '25px' } }">
+      Aliquam erat volutpat. Etiam luctus massa ex, at tempus tellus blandit quis. Sed quis neque tellus. Donec maximus
+      ipsum in malesuada hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a
+    </div>
+  </div>
+
+  <div id="login-form-wrapper">
+    <div id="login-form">
+      <div class="logo" fxHide.gt-xs>
+        <img src="assets/entity-system-management@192.png" />
+      </div>
+      <div class="title">Accede a tu cuenta</div>
+      <form (ngSubmit)="login()" name="loginForm" [formGroup]="loginForm" novalidate>
+        <div class="login-error" [hidden]="!error || isLoading" translate>
+          Nombre de usuario o contraseña incorrecta.
+        </div>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Correo electronico</mat-label>
+          <input matInput formControlName="username" />
+          <mat-icon matSuffix class="secondary-text">mail</mat-icon>
+          <mat-error *ngIf="loginForm.get('username').hasError('required')">
+            Correo electrónico es requerido
+          </mat-error>
+          <mat-error
+            *ngIf="!loginForm.get('username').hasError('required') && loginForm.get('username').hasError('email')"
+          >
+            Por favor entre una direccion valida de correo
+          </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+          <mat-label>Contraseña</mat-label>
+          <input matInput type="password" formControlName="password" />
+          <mat-icon matSuffix class="secondary-text">vpn_key</mat-icon>
+          <mat-error>
+            Contraseña es requerida
+          </mat-error>
+        </mat-form-field>
+        <button
+          mat-raised-button
+          class="submit-button"
+          color="primary"
+          type="submit"
+          [disabled]="loginForm.invalid || isLoading"
+        >
+          <app-loader class="inline-loader" [isLoading]="isLoading"></app-loader>
+          <span>Continuar</span>
+        </button>
+      </form>
+      <div class="separator">
+        <span class="text">O</span>
+      </div>
+      <div fxLayout="column" fxLayoutAlign="start center">
+        <button mat-raised-button class="google" (click)="loginWithGoogle()">
+          <app-loader class="inline-loader" [isLoading]="isLoadingG"></app-loader>
+          <span>Continuar con Google</span>
+        </button>
+      </div>
+      <div class="register" fxLayout="column" fxLayoutAlign="center center">
+        <span class="text">No tienes una cuenta?</span>
+        <a class="link" [routerLink]="'/register'">Crear una cuenta</a>
+      </div>
+    </div>
+  </div>
+</div>

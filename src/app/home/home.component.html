@@ -1,0 +1,218 @@
+<!-- <div class="container">
+  <mat-card>
+    <p>
+      <img class="logo" src="assets/ngx-rocket-logo.png" alt="angular logo" />
+    </p>
+    <mat-card-content>
+      <mat-card-title translate>Hello world !</mat-card-title>
+      <mat-card-subtitle>
+        <app-loader [isLoading]="isLoading" size="1.5"></app-loader>
+        <q [hidden]="isLoading">{{ quote }}</q>
+      </mat-card-subtitle>
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          angulartics2On="click"
+          angularticsAction="Click button below quote"
+          [angularticsCategory]="quote"
+        >
+          Click me to send an Analytics event
+        </button>
+      </mat-card-actions>
+    </mat-card-content>
+  </mat-card>
+</div> -->
+<div class="full-width mat-typography" id="homepage" fxLayout="column" fxLayoutAlign="center">
+  <app-bar></app-bar>
+
+  <!-- Header -->
+  <div class="header" fxLayout="column" fxLayoutAlign="start center">
+    <div class="hero-text mb-16">
+      <h1>Reserva online en CloudReserve</h1>
+      <span>Encuentra tus sitios habituales</span>
+    </div>
+    <!-- <div> -->
+    <div class="search mat-elevation-z7" fxLayout="row" fxLayoutAlign="start center">
+      <mat-icon (click)="search()">search</mat-icon>
+      <input [formControl]="searchInput" placeholder="Qué estas buscando..." fxFlex (keydown.enter)="search()" />
+    </div>
+    <!-- </div> -->
+  </div>
+  <!-- end Header -->
+
+  <div class="content" fxLayout="column">
+    <!-- Pricing -->
+    <div
+      class="price-tables"
+      [@animate]="{ value: '*', params: { duration: '500ms', delay: '50ms', y: '125px' } }"
+      fxLayout="row wrap"
+      fxLayoutAlign="center center"
+    >
+      <div class="price-table mat-elevation-z4" fxLayout="column">
+        <div class="package-type">
+          <div class="title">Starter</div>
+          <div class="subtitle">For Small teams</div>
+        </div>
+        <div class="price primary-300" fxLayout="row" fxLayoutAlign="center start">
+          <div class="currency">$</div>
+          <div fxLayout="row" fxLayoutAlign="center end">
+            <div class="value">29</div>
+            <div class="period">monthly per user</div>
+          </div>
+        </div>
+        <div class="terms" fxLayout="column" fxLayoutAlign="start center">
+          <div class="term">Unlimited projects</div>
+          <div class="term">Unlimited pages</div>
+          <div class="term">Unlimited disk space</div>
+          <div class="term">24 / 7 Free support</div>
+        </div>
+
+        <button [routerLink]="['/register']" mat-raised-button class="cta-button" color="accent">
+          GET STARTED FREE
+        </button>
+
+        <div class="note">7 day free trial to start</div>
+      </div>
+      <div class="price-table mat-elevation-z12" fxLayout="column">
+        <div class="package-type">
+          <div class="title">Pro</div>
+          <div class="subtitle">For larger teams</div>
+        </div>
+
+        <div class="price primary" fxLayout="row" fxLayoutAlign="center start">
+          <div class="currency">$</div>
+          <div fxLayout="row" fxLayoutAlign="center end">
+            <div class="value">59</div>
+            <div class="period">monthly per user</div>
+          </div>
+        </div>
+
+        <div class="terms" fxLayout="column" fxLayoutAlign="start center">
+          <div class="term">Unlimited projects</div>
+          <div class="term">Unlimited pages</div>
+          <div class="term">Unlimited disk space</div>
+          <div class="term">24 / 7 Free support</div>
+          <div class="term mat-warn-fg">Advanced reporting</div>
+          <div class="term mat-warn-fg">Customizable interface</div>
+          <div class="term mat-warn-fg">CRM Integration</div>
+        </div>
+
+        <button [routerLink]="['/register']" mat-raised-button class="cta-button" color="accent">
+          GET STARTED FREE
+        </button>
+
+        <div class="note">30 day free trial to start</div>
+      </div>
+      <div class="price-table mat-elevation-z4" fxLayout="column">
+        <div class="package-type">
+          <div class="title">Enterprise</div>
+          <div class="subtitle">For big teams</div>
+        </div>
+
+        <div class="price primary-300" fxLayout="row" fxLayoutAlign="center start">
+          <div class="currency">$</div>
+          <div fxLayout="row" fxLayoutAlign="center end">
+            <div class="value">99</div>
+            <div class="period">monthly per user</div>
+          </div>
+        </div>
+
+        <div class="terms" fxLayout="column" fxLayoutAlign="start center">
+          <div class="term">Unlimited projects</div>
+          <div class="term">Unlimited pages</div>
+          <div class="term">Unlimited disk space</div>
+          <div class="term">For full feature list, call us</div>
+        </div>
+
+        <button mat-raised-button class="cta-button" color="accent">CALL US</button>
+
+        <div class="note">90 day free trial to start</div>
+      </div>
+    </div>
+    <!-- end Pricing-->
+    <div fxLayout="column" fxLayoutAlign="center center">
+      <mat-divider fxLayout="center center"></mat-divider>
+    </div>
+    <!-- Stats -->
+    <div class="stats" fxLayout="column" fxLayoutAlign="center center">
+      <div class="title" fxFlex="100">Nuestros números</div>
+      <div class="categories" fxLayout="row wrap" fxLayoutGap="25px" fxLayoutAlign="center center">
+        <mat-card class="cat" fxLayout="column" fxLayoutAlign="center center">
+          <div class="bar pink"></div>
+          <mat-card-title class="title">+7000</mat-card-title>
+          <mat-card-subtitle class="subtitle">Clientes</mat-card-subtitle>
+        </mat-card>
+        <mat-card class="cat" fxLayout="column" fxLayoutAlign="center center">
+          <div class="bar black"></div>
+          <mat-card-title class="title">+60000</mat-card-title>
+          <mat-card-subtitle class="subtitle">Negocios</mat-card-subtitle>
+        </mat-card>
+        <mat-card class="cat" fxLayout="column" fxLayoutAlign="center center">
+          <div class="bar red"></div>
+          <mat-card-title class="title">+800</mat-card-title>
+          <mat-card-subtitle class="subtitle">Reservas</mat-card-subtitle>
+        </mat-card>
+        <mat-card class="cat" fxLayout="column" fxLayoutAlign="center center">
+          <div class="bar violet"></div>
+          <mat-card-title class="title">
+            +3000
+          </mat-card-title>
+          <mat-card-subtitle class="subtitle">Reservas Confirmadas</mat-card-subtitle>
+        </mat-card>
+      </div>
+    </div>
+    <!-- end Stats-->
+    <!-- Faqs -->
+    <div
+      class="faqs"
+      fxLayout="column"
+      fxLayoutAlign="center center"
+      [@animate]="{ value: '*', params: { delay: '50ms', y: '25px' } }"
+    >
+      <div class="title" fxFlex="100">Preguntas Frecuentes</div>
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">How does free trial work?</div>
+        <div class="answer">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a diam nec augue tincidunt accumsan. In
+          dignissim laoreet ipsum eu interdum. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a diam
+          nec augue tincidunt accumsan. In dignissim laoreet ipsum eu interdum.
+        </div>
+      </div>
+
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">Can I cancel any time?</div>
+        <div class="answer">
+          Aliquam erat volutpat. Etiam luctus massa ex, at tempus tellus blandit quis. Sed quis neque tellus. Donec
+          maximus ipsum in malesuada hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a
+          diam nec augue tincidunt accumsan. In dignissim laoreet ipsum eu interdum. Lorem ipsum dolor sit amet,
+          consectetur adipiscing elit. Curabitur a diam nec augue tincidunt accumsan. In dignissim laoreet ipsum eu
+          interdum.
+        </div>
+      </div>
+
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">What happens after my trial ended?</div>
+        <div class="answer">
+          Aliquam erat volutpat. Etiam luctus massa ex, at tempus tellus blandit quis. Sed quis neque tellus. Donec
+          maximus ipsum in malesuada hendrerit. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a
+          diam nec augue tincidunt accumsan. In dignissim laoreet ipsum eu interdum.
+        </div>
+      </div>
+
+      <div class="item" fxFlex="100" fxFlex.gt-xs="50">
+        <div class="question">Can I have a discount?</div>
+        <div class="answer">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a diam nec augue tincidunt accumsan. In
+          dignissim laoreet ipsum eu interdum.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur a diam
+          nec augue tincidunt accumsan. In dignissim laoreet ipsum eu interdum.
+        </div>
+      </div>
+    </div>
+    <!-- end Faqs-->
+    <footer class="footer" fxLayout="column" fxLayoutAlign="center end">
+      <div class="copyrigth">
+        &copy; 2020 CloudReserve | All rigths reserved
+      </div>
+    </footer>
+  </div>
+</div>

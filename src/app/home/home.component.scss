@@ -1,0 +1,234 @@
+@import "src/theme/theme-variables";
+
+:host {
+  display: flex;
+  flex: 1;
+  background-color: #f5f5f5;
+}
+
+.full-width {
+  display: flex;
+  flex: 1 0 auto;
+  width: 100%;
+
+  -webkit-box-flex: 1;
+}
+
+#homepage {
+  mat-divider {
+    width: 35%;
+  }
+  .header {
+    flex: 1 0 auto;
+    height: 500px;
+    max-height: 500px;
+    background: rgb(51, 63, 192);
+    background: linear-gradient(to right, #0e2a3b 0%, #34306b 100%);
+    background: url("/assets/material-bg.jpg") no-repeat;
+    background-size: cover;
+
+    .hero-text {
+      margin: 60px 0 34px 0px;
+      text-align: center;
+
+      h1 {
+        color: white;
+        font-size: 48px;
+        font-weight: 400;
+        letter-spacing: 0.01em;
+        line-height: normal;
+        text-align: center;
+        margin-top: 0;
+        margin-bottom: 16px;
+      }
+      span {
+        color: white;
+      }
+    }
+
+    .search {
+      width: 100%;
+      // min-width: 100%;
+      max-width: 640px;
+      height: 56px;
+      background-color: white;
+      line-height: 56px;
+      padding: 24px;
+      border-radius: 28px;
+      margin: 64px 24px;
+      mat-icon {
+        cursor: pointer;
+      }
+      input {
+        height: 56px;
+        padding-left: 16px;
+        border: none;
+        outline: none;
+      }
+    }
+  }
+  .price-tables {
+    flex: 1 0 auto;
+    margin-top: -172px;
+    margin-bottom: 65px;
+    @include media-breakpoint("xs") {
+      margin-top: -128px;
+    }
+
+    .price-table {
+      margin: 12px;
+      border-radius: 3px;
+      min-width: 280px;
+      background-color: white;
+      .package-type {
+        padding: 32px;
+        text-align: center;
+        line-height: normal;
+        .title {
+          font-size: 34px;
+        }
+        .subtitle {
+          font-size: 17px;
+          font-weight: 600;
+          color: rgba(0, 0, 0, 0.5);
+        }
+      }
+      .primary-300 {
+        background-color: #7d818c !important;
+        color: white !important;
+      }
+      .primary {
+        background-color: #3c4252 !important;
+        color: white !important;
+      }
+      .price {
+        padding: 10px 32px;
+        .value {
+          font-size: 34px;
+          font-weight: 300;
+          line-height: 1;
+          margin-right: 2px;
+        }
+      }
+      .terms {
+        margin: 32px;
+        font-size: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        .term {
+          padding-bottom: 16px;
+        }
+      }
+      .cta-button {
+        margin: 8px 32px;
+        .mat-button-wrapper {
+          line-height: normal;
+        }
+      }
+      .note {
+        color: rgba(0, 0, 0, 0.5);
+        padding: 8px 32px 16px 32px;
+        text-align: center;
+      }
+    }
+  }
+  .stats {
+    padding: 65px;
+    .title {
+      font-size: 30px;
+    }
+    .categories {
+      margin: 45px;
+      .cat {
+        padding: 40px;
+        min-width: 250px;
+        margin: 25px;
+        min-height: 50px;
+        .title {
+          line-height: normal;
+          font-size: 36px;
+        }
+        .subtitle {
+          line-height: normal;
+          font-size: 20px;
+        }
+        .bar {
+          position: absolute;
+          top: 0;
+          width: 100%;
+          height: 4px;
+        }
+        .red {
+          background-color: red;
+        }
+        .pink {
+          background-color: pink;
+        }
+        .black {
+          background-color: black;
+        }
+        .violet {
+          background-color: blueviolet;
+        }
+      }
+    }
+  }
+  .faqs {
+    padding: 65px 0;
+    color: white;
+    background: rgb(51, 63, 192);
+    background: linear-gradient(to right, #0e2a3b 0%, #34306b 100%);
+    .title {
+      font-size: 30px;
+    }
+    .item {
+      padding: 24px;
+      max-width: 70%;
+      box-sizing: border-box;
+      .question {
+        font-size: 18px;
+        margin-bottom: 8px;
+      }
+      .answer {
+        font-size: 16px;
+        line-height: 1.5;
+        color: whitesmoke;
+        text-align: justify;
+      }
+    }
+  }
+  .footer {
+    background-color: mat-color($app-primary);
+    height: 65px;
+    color: white;
+    .copyrigth {
+      margin-right: 2%;
+    }
+  }
+}
+
+.co {
+  width: 100%;
+}
+.spacer {
+  flex: 1 1 auto;
+}
+
+.carousel {
+  background-color: red;
+}
+
+.github-span {
+  margin-left: 4px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.section {
+  height: fit-content;
+  border-bottom: 1px solid gray;
+}
+
+.container {
+  text-align: center;
+  padding: 1em;
+}
