@@ -15,7 +15,8 @@ export class HomeComponent implements OnInit {
   data = {
     name: 'CloudReserve',
     bio: `Reserva online, encuentra tus sitios habituales`,
-    image: 'https://marilys-jimenez.herokuapp.com/assets/mary.jpg',
+    image:
+      'https://reservecloud-app.herokuapp.com/assets/entity-system-management@192.png',
   };
   searchInput = new FormControl();
   constructor(private title: Title, private meta: Meta) {}
