@@ -13,7 +13,7 @@ import { appAnimations } from '../animations';
 })
 export class HomeComponent implements OnInit {
   data = {
-    name: 'CloudReserve',
+    name: 'ReserveCloud',
     bio: `Reserva online, encuentra tus sitios habituales`,
     image:
       'https://reservecloud-app.herokuapp.com/assets/entity-system-management@192.png',
